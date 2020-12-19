@@ -64,7 +64,6 @@ app.get('/',function(req,res){
         context.cardCount = req.query.cardCount;
         // get cards and render deck view
         mysql.pool.query(getCards,[req.query.deck,session.username],function(err,results){
-            console.log(results);
             var cards = [];
             for (let row of results) {
                 cards.push({"id":row.id,"username":row.username,"deck":row.deck,"question":row.question,"answer":row.answer,"review_count":row.review_count,"correct_count":row.correct_count})
@@ -82,7 +81,6 @@ app.get('/',function(req,res){
 app.post('/', function(req,res,next){
     if (req.body.newDeck) {
         mysql.pool.query(insertCard,[session.username,req.body.deck,req.body.question,req.body.answer], function(err,results){
-            console.log(req.body);
             getDecks(session.username,res);
         })
     }
