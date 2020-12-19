@@ -39,7 +39,7 @@ function getDecks (username,res) {
         var context = {};
         context.name = username;
         var decks = [];
-        for (let row of results) {
+        for (let row of results||false) {
             decks.push({"deck":row.deck,"cardCount":row['COUNT(id)']});
         }
         context.decks = decks;
@@ -114,8 +114,14 @@ app.delete('/',function(req,res,next){
 app.get('/reset-table',function(req,res,next){
     mysql.pool.query(dropTableQuery, function(err){
       mysql.pool.query(makeTableQuery, function(err){
-        console.log("Table reset");
-        res.render('home');
+          if (err) {
+              console.log(err);
+              next(err);
+          }
+          else {
+            console.log("Table reset");
+            res.render('home');
+          }
       })
     });
   });
