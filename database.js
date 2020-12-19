@@ -67,7 +67,7 @@ app.get('/',function(req,res){
             var cards = [];
             for (let row of results) {
                 cards.push({"id":row.id,"username":row.username,"deck":row.deck,"question":row.question,"answer":row.answer,"review_count":row.review_count,"correct_count":row.correct_count})
-            }
+            };
             context.cards = cards;
             res.render('deck',context);
         })

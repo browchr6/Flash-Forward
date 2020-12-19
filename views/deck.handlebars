@@ -6,7 +6,11 @@
 <form action="/"><input type="submit" value="Go Back"></form>
 
 <!-- Test knowledge -->
-<button>Test Knowledge!</button>
+<form action="/">
+    <input type="text" hidden name="deck" value="{{deck}}">
+    <input type="submit" name="testKnowledge" value="Test Knowledge!">
+</form>
+
 
 <!-- Add a card-->
 <form id="addCard" action="/" method="POST">
@@ -33,10 +37,14 @@
     <tbody>
         {{#each cards}}
             <tr>
-                <td>{{this.question}}</td>
-                <td>{{this.answer}}</td>
-                <td><button>Edit</button></td>
-                <td><button>Delete</button></td>
+                <td hidden><input type="number" value={{this.id}}></td>
+                <td hidden><input type="text" value={{this.username}}></td>
+                <td><input type="text" disabled=disabled value={{this.question}}></td>
+                <td><input type="text" disabled=disabled value={{this.answer}}></td>                
+                <td hidden><input type="number" disabled=disabled value={{this.review_count}}></td>
+                <td hidden><input type="number" disabled=disabled value={{this.correct_count}}></td>
+                <td><input type="submit" name="edit" value="Edit"></td>
+                <td><input type="submit" name="delete" value="Delete"></td>
             </tr>
         {{/each}}
     </tbody>
