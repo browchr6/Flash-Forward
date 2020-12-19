@@ -18,11 +18,10 @@ var request = require('request');
 app.use(express.static('public'));
 
 const getAllQuery = "SELECT `id`,`username`,`deck`,`question`,`answer`,`review_count`,`correct_count` FROM flashcards";
-const getCount = "SELECT COUNT(id) FROM flashcards WHERE username=? AND deck=?";
 const getDeckNames = "SELECT deck, COUNT(id) FROM flashcards WHERE username=? GROUP BY deck";
 const getCards = "SELECT `id`,`username`,`deck`,`question`,`answer`,`review_count`,`correct_count` FROM flashcards WHERE deck=? AND username=?";
 const insertCard = "INSERT INTO flashcards (`username`,`deck`,`question`,`answer`,`review_count`,`correct_count`) VALUES (?,?,?,?,0,0)";
-const updateQuery = "UPDATE flashcards SET name=?, reps=?, weight=?, unit=?, date=? WHERE id=? ";
+const updateQuery = "UPDATE flashcards SET username=?, name=?, deck=?,question=?,answer=?, review_count=?, correct_count=? WHERE id=? ";
 const deleteQuery = "DELETE FROM flashcards WHERE id=?";
 const dropTableQuery = "DROP TABLE IF EXISTS flashcards";
 const makeTableQuery =  `CREATE TABLE flashcards(
@@ -80,10 +79,6 @@ app.get('/',function(req,res){
     }
 })
 
-app.get('/open-deck',function(req,res){
-    
-})
-
 app.post('/', function(req,res,next){
     if (req.body.newDeck) {
         mysql.pool.query(insertCard,[session.username,req.body.deck,req.body.question,req.body.answer], function(err,results){
@@ -110,6 +105,10 @@ app.post('/', function(req,res,next){
             })
         })
     }
+})
+
+app.delete('/',function(req,res,next){
+    
 })
 
 app.get('/reset-table',function(req,res,next){

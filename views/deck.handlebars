@@ -21,13 +21,26 @@
 
 <!-- View cards and delete certain cards if they want to-->
 {{#if cards}}
-<ul id="cardLIst">
-    {{#each cards}}
-    <li>
-        {{this.question}} - {{this.answer}} <button>Edit</button> <button>Delete</button>
-    </li>
-    {{/each}}
-</ul>
+<table id="deckTable">
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each cards}}
+            <tr>
+                <td>{{this.question}}</td>
+                <td>{{this.answer}}</td>
+                <td><button>Edit</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
 {{/if}}
 
 <script src="client_script_deck.js"></script>
