@@ -1,29 +1,31 @@
 <!-- Deck name, number of cards-->
-<h1 id="{{deck}}">Deck: {{deck}}</h1>
-<p>Card count: {{cardCount}}</p>
+<h1 style="font-family:courier new;" id="{{deck}}">Deck: {{deck}}</h1>
+<p style="font-family:courier new;">Card count: {{cardCount}}</p>
 
 <!-- button to go back to the home page-->
 <form action="/"><input type="submit" value="Go Back"></form>
-
+<br>
 <!-- Test knowledge -->
 <form action="/">
     <input type="text" hidden name="deck" value="{{deck}}">
     <input type="submit" name="testKnowledge" value="Test Knowledge!">
 </form>
-
+<br>
 
 <!-- Add a card-->
+<h3 style="font-family:courier new;">Add a Card</h3>
 <form id="addCard" action="/" method="POST">
     <input type="text" hidden name="deck" value="{{deck}}">
     <input type="number" hidden name="cardCount" value={{cardCount}}>
-    <label for="question">Question:</label>
+    <label for="question" style="font-family:courier new;">Question:</label>
     <input type="text" name="question">
-    <label for="answer">Answer:</label>
+    <label for="answer" style="font-family:courier new;">Answer:</label>
     <input type="text" name="answer">
     <input type="submit" name="addCard" value="Add Card">
 </form>
 
 <!-- View cards and delete certain cards if they want to-->
+<h3 style="font-family:courier new; margin-left: 140px;">Cards In This Deck</h3>
 {{#if cards}}
 <table id="deckTable">
     <thead>
