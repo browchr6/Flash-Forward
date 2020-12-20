@@ -3,10 +3,10 @@
 <center>
 
 <h1>Deck: {{deck}}</h1>
-<h3>Card count: {{cardCount}}</h3>
+<h3>Card Count: {{cardCount}}</h3>
 
 <!-- button to go back to the home page-->
-<form action="/"><input type="submit" value="Back to decks"></form>
+<form action="/"><input type="submit" value="Back to Decks"></form>
 <br>
 <!-- Test knowledge -->
 <form action="/">
@@ -20,12 +20,12 @@
 <form id="addCard" action="/" method="POST">
     <input type="text" hidden name="deck" value="{{deck}}">
     <input type="number" hidden name="cardCount" value={{cardCount}}>
-    <label for="question">Question:</label>
+    <label style= "margin-left: -20px;" for="question">Question:</label>
     <input type="text" name="question">
-    <br>
+    <br><br>
     <label for="answer">Answer:</label>
     <input type="text" name="answer">
-    <br>
+    <br><br>
     <input type="submit" name="addCard" value="Add Card">
 </form>
 
