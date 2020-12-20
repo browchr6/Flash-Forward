@@ -1,11 +1,11 @@
-<center><h1 style="font-family:courier new;font-size:80px;">Flash Forward</h1></center>
-<center><h2 style="font-family:courier new;">Hello {{name}}!</h2></center>
+<center><h1 style="font-size:80px;">Flash Forward</h1></center>
+<center><h2>Hello {{name}}!</h2></center>
 <br>
-<h2 style="font-family:courier new;">Here are your flashcard decks:</h2>
-
+<center>
+<h2>Here are Your Flashcard Decks:</h2>
 <!-- Show flashcard decks, in an unordered list, with deckname, card count, and a button to choose a deck -->
 {{#if decks}}
-    <ul id="deckList">
+    <ul id="deckList" style="text-align: center; list-style-position: inside;">
     {{#each decks}}
         <form action="">
             <li>
@@ -20,24 +20,26 @@
     {{/each}}
     </ul>
 {{else}}
-    <h3 style="font-family:courier new;">You have no decks! Create new deck below</h3>
+    <h3>You have no decks! Create new deck below</h3>
 {{/if}}
 
-
-<!-- Create a new deck-->
+<!-- Create a new deck -->
 <br>
-<h3 style="font-family:courier new;">Create a new Deck:</h3>
+<h3>Create a New Deck:</h3>
 <form id="newDeck" action="/" method="POST">
-    <label for="deck" style="font-family:courier new;">New deck name: </label>
+    <label for="deck">New Deck Name: </label>
     <input type="text" name="deck"><br>
     <br>
-    <label for="question" style="font-family:courier new;">Question:</label>
-
+    <label style= "margin-left: -20px;" for="question">Question:</label>
     <input type="text" name="question">
-    <label for="answer" style="font-family:courier new;">Answer:</label>
+    <br><br>
+    <label for="answer">Answer:</label>
     <input type="text" name="answer">
+    <br><br>
     <input type="submit" name="newDeck" value="Create Deck">
 </form>
+
+</center>
 
 <!-- stats on how many cards have been reviewed in the past 7 days-->
 

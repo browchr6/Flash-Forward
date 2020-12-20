@@ -1,0 +1,29 @@
+<center>
+<h1>Deck: <span id="deckName">{{deck}}</span></h1>
+<h2>Test your knowledge!</h2>
+<div>Review tally: <span id=reviewTally>0</span></div>
+<div>Correct: <span id=correctTally>0</span></div>
+
+<!-- button to go back to the home page-->
+<form action="/"><input type="submit" value="Back to decks"></form>
+<br>
+
+<div id='flashcardContainer'>
+    <h4>Question:</h4>
+    <div id="question" class='flashcard'></div>
+    <br>
+    <h4>Answer:</h4>
+    <div id="answer" class='flashcard'>
+        <span id="answerSpan"></span>
+        <button id="answerButton">Reveal Answer</button>
+    </div>
+</div>
+<br>
+<br>
+<div id='responseButtons'>
+    <button id="wrongButton">Wrong</button>
+    <button id="rightButton">Right</button>
+</div>
+</center>
+<script src="client_script_test.js"></script>
+<link rel="stylesheet" href="client_style_test.css">

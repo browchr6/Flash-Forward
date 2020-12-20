@@ -1,10 +1,12 @@
 <!-- Deck name, number of cards-->
 
-<h1 style="font-family:courier new;">Deck: {{deck}}</h1>
-<p style="font-family:courier new;">Card count: {{cardCount}}</p>
+<center>
+
+<h1>Deck: {{deck}}</h1>
+<h3>Card Count: {{cardCount}}</h3>
 
 <!-- button to go back to the home page-->
-<form action="/"><input type="submit" value="Go Back"></form>
+<form action="/"><input type="submit" value="Back to Decks"></form>
 <br>
 <!-- Test knowledge -->
 <form action="/">
@@ -14,19 +16,21 @@
 <br>
 
 <!-- Add a card-->
-<h3 style="font-family:courier new;">Add a Card</h3>
+<h3>Add a Card</h3>
 <form id="addCard" action="/" method="POST">
     <input type="text" hidden name="deck" value="{{deck}}">
     <input type="number" hidden name="cardCount" value={{cardCount}}>
-    <label for="question" style="font-family:courier new;">Question:</label>
+    <label style= "margin-left: -20px;" for="question">Question:</label>
     <input type="text" name="question">
-    <label for="answer" style="font-family:courier new;">Answer:</label>
+    <br><br>
+    <label for="answer">Answer:</label>
     <input type="text" name="answer">
+    <br><br>
     <input type="submit" name="addCard" value="Add Card">
 </form>
 
 <!-- View cards and delete certain cards if they want to-->
-<h3 style="font-family:courier new; margin-left: 140px;">Cards In This Deck</h3>
+<h3>Cards In This Deck</h3>
 {{#if cards}}
 <table id="deckTable" deckName="{{deck}}">
     <thead>
@@ -53,6 +57,8 @@
     </tbody>
 </table>
 {{/if}}
+
+</center>
 
 <script src="client_script_deck.js"></script>
 <link rel="stylesheet" href="client_style_deck.css">
