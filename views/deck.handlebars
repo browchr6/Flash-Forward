@@ -1,27 +1,34 @@
 <!-- Deck name, number of cards-->
-<h1 id="{{deck}}">Deck: {{deck}}</h1>
-<p>Card count: {{cardCount}}</p>
+
+<h1 style="font-family:courier new;">Deck: {{deck}}</h1>
+<p style="font-family:courier new;">Card count: {{cardCount}}</p>
 
 <!-- button to go back to the home page-->
 <form action="/"><input type="submit" value="Go Back"></form>
-
+<br>
 <!-- Test knowledge -->
-<button>Test Knowledge!</button>
+<form action="/">
+    <input type="text" hidden name="deck" value="{{deck}}">
+    <input type="submit" name="testKnowledge" value="Test Knowledge!">
+</form>
+<br>
 
 <!-- Add a card-->
+<h3 style="font-family:courier new;">Add a Card</h3>
 <form id="addCard" action="/" method="POST">
     <input type="text" hidden name="deck" value="{{deck}}">
     <input type="number" hidden name="cardCount" value={{cardCount}}>
-    <label for="question">Question:</label>
+    <label for="question" style="font-family:courier new;">Question:</label>
     <input type="text" name="question">
-    <label for="answer">Answer:</label>
+    <label for="answer" style="font-family:courier new;">Answer:</label>
     <input type="text" name="answer">
     <input type="submit" name="addCard" value="Add Card">
 </form>
 
 <!-- View cards and delete certain cards if they want to-->
+<h3 style="font-family:courier new; margin-left: 140px;">Cards In This Deck</h3>
 {{#if cards}}
-<table id="deckTable">
+<table id="deckTable" deckName="{{deck}}">
     <thead>
         <tr>
             <th>Question</th>
@@ -33,10 +40,14 @@
     <tbody>
         {{#each cards}}
             <tr>
-                <td>{{this.question}}</td>
-                <td>{{this.answer}}</td>
-                <td><button>Edit</button></td>
-                <td><button>Delete</button></td>
+                <td hidden><input type="number" name='id' value={{this.id}}></td>
+                <td hidden><input type="text" name='username' value={{this.username}}></td>
+                <td><input type="text" disabled=disabled name='question' value="{{this.question}}"></td>
+                <td><input type="text" disabled=disabled name='answer' value="{{this.answer}}"></td>                
+                <td hidden><input type="number" disabled=disabled name='review_count' value={{this.review_count}}></td>
+                <td hidden><input type="number" disabled=disabled name='correct_count' value={{this.correct_count}}></td>
+                <td><input type="submit" name="edit" value="Edit"></td>
+                <td><input type="submit" name="delete" value="Delete"></td>
             </tr>
         {{/each}}
     </tbody>
