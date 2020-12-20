@@ -1,6 +1,6 @@
 <!-- Deck name, number of cards-->
-<h1 id="{{deck}}">Deck: {{deck}}</h1>
-<p>Card count: {{cardCount}}</p>
+<h1>Deck: {{deck}}</h1>
+<p>Card count: <span id="cardCount">{{cardCount}}</span></p>
 
 <!-- button to go back to the home page-->
 <form action="/"><input type="submit" value="Go Back"></form>
@@ -25,7 +25,7 @@
 
 <!-- View cards and delete certain cards if they want to-->
 {{#if cards}}
-<table id="deckTable">
+<table id="deckTable" deckName="{{deck}}">
     <thead>
         <tr>
             <th>Question</th>
@@ -39,8 +39,8 @@
             <tr>
                 <td hidden><input type="number" name='id' value={{this.id}}></td>
                 <td hidden><input type="text" name='username' value={{this.username}}></td>
-                <td><input type="text" disabled=disabled name='question' value={{this.question}}></td>
-                <td><input type="text" disabled=disabled name='answer' value={{this.answer}}></td>                
+                <td><input type="text" disabled=disabled name='question' value="{{this.question}}"></td>
+                <td><input type="text" disabled=disabled name='answer' value="{{this.answer}}"></td>                
                 <td hidden><input type="number" disabled=disabled name='review_count' value={{this.review_count}}></td>
                 <td hidden><input type="number" disabled=disabled name='correct_count' value={{this.correct_count}}></td>
                 <td><input type="submit" name="edit" value="Edit"></td>
