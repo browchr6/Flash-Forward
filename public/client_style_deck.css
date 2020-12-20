@@ -11,3 +11,20 @@ td > input {
 tr {
     background: white;
 }
+
+input {
+    font-size:1.2rem;
+}
+
+body {
+    font-size:1.2rem;
+    font-weight:700;
+}
+
+#addCard > div {
+    width:20%;
+}
+
+.floatRight {
+    float:right;
+}
