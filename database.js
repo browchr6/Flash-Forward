@@ -3,6 +3,9 @@ var mysql = require('./dbcon.js');
 var app = express();
 app.set('port',3000);
 
+var CORS = require('cors');
+app.use(CORS());
+
 var handlebars = require('express-handlebars').create({defaultLayout:'main'})
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
@@ -106,7 +109,7 @@ app.post('/', function(req,res,next){
 })
 
 app.delete('/',function(req,res,next){
-    
+    console.log(req.body)
 })
 
 app.get('/reset-table',function(req,res,next){
