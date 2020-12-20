@@ -1,0 +1,27 @@
+<<<<<<< HEAD
+=======
+body {
+    font-size:1.6rem;
+    font-weight:300;
+}
+
+input, button {
+    font-size:1.2rem;
+}
+#q, #a {
+    color: #1d3557;
+    font-weight: bold;
+    font-size: 2rem;
+}
+#wrongButton {
+    color: white;
+    background-color:#e63946 ;
+}
+#rightButton {
+    color: white;
+    background-color:#0ead00 ;
+}
+#score {
+    color: #f1faee;
+}
+>>>>>>> 654c66331e50958e07f3236acf99151a84765e5f

@@ -1,10 +1,52 @@
 
+ul {
+    list-style-type: none;
+}
 body {
     font-family:'courier new';
-    background-color:rgb(48, 139, 167)
+    background-color:rgb(48, 139, 167);
+    color: #1d3557;
 }
 
 input{
     font-family:'courier new';
 }
+.whiteCard {
+    background-color: #f1faee;
+    border-radius: 10px;
+    padding: 15px 25px;
+    width: 60%;
+    margin: 10px;
+    box-shadow: 0px 5px 5px black;
+}
+#deckList {
+    display: flex;
+    justify-content: comlumn;
+    align-items: center;
+    width: 60%;
+    flex-wrap: wrap;
 
+}
+#table {
+    padding: 0px;
+}
+#addacard {
+    width: 30%;
+}
+hr {
+    width: 75%;
+
+}
+h1, h2, h3 {
+    color:  #f1faee;
+}
+#addCard > div {
+    width:20%;
+}
+#add {
+    color: #1d3557;
+}
+#deckList {
+    margin-left: 10%;
+    padding-left: 10%;
+}
