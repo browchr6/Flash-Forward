@@ -20,11 +20,16 @@
 <form id="addCard" action="/" method="POST">
     <input type="text" hidden name="deck" value="{{deck}}">
     <input type="number" hidden name="cardCount" value={{cardCount}}>
-    <label for="question">Question:</label>
-    <input type="text" name="question">
+    <div>
+        <label for="question">Question:</label>
+        <input class="floatRight" type="text" name="question">
+    </div>
     <br>
-    <label for="answer">Answer:</label>
-    <input type="text" name="answer">
+    <div>
+        <label for="answer">Answer:</label>
+        <input class="floatRight" type="text" name="answer">
+    </div>
+    
     <br>
     <input type="submit" name="addCard" value="Add Card">
 </form>

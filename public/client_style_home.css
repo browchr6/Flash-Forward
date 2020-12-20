@@ -1,0 +1,19 @@
+li {
+    font-size:1.6rem;
+}
+
+#newDeck {
+    font-size:1.6rem;
+}
+
+input {
+    font-size:1.2rem;
+}
+
+.floatRight {
+    float:right;
+}
+
+#newDeck > div {
+    width:30%;
+}

@@ -8,12 +8,12 @@
     <ul id="deckList">
     {{#each decks}}
         <form action="">
-            <li>
+            <li>    
                 {{this.deck}}, [{{this.cardCount}} cards]
                 <input type="text" hidden name="deck" value="{{this.deck}}">
                 <input type="number" hidden name="cardCount" value="{{this.cardCount}}">
                 <input type="submit" name="openDeck" value="Open">
-                <input type="submit" name="testKnowledge" value="Test Knowledge!">
+                <input type="submit" name="testKnowledge" value="Test Knowledge!">      
             </li>
         </form>
     <br>
@@ -27,15 +27,19 @@
 <br>
 <h3>Create a new Deck:</h3>
 <form id="newDeck" action="/" method="POST">
-    <label for="deck">New deck name: </label>
-    <input type="text" name="deck"><br>
+    <div>
+        <label for="deck">New deck name: </label>
+        <input class="floatRight" type="text" name="deck"><br>
+    </div>
     <br>
-    <label for="question">Question:</label>
-    <input type="text" name="question">
-    <br>
-    <label for="answer">Answer:</label>
-    <input type="text" name="answer">
-    <br>
+    <div>
+        <label for="question">Question:</label>
+        <input class="floatRight" type="text" name="question">
+    </div>
+    <div>
+        <label for="answer">Answer:</label>
+        <input class="floatRight" type="text" name="answer">
+    </div>
     <input type="submit" name="newDeck" value="Create Deck">
 </form>
 
