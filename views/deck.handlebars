@@ -1,4 +1,5 @@
 <!-- Deck name, number of cards-->
+
 <h1 style="font-family:courier new;" id="{{deck}}">Deck: {{deck}}</h1>
 <p style="font-family:courier new;">Card count: {{cardCount}}</p>
 
@@ -27,7 +28,7 @@
 <!-- View cards and delete certain cards if they want to-->
 <h3 style="font-family:courier new; margin-left: 140px;">Cards In This Deck</h3>
 {{#if cards}}
-<table id="deckTable">
+<table id="deckTable" deckName="{{deck}}">
     <thead>
         <tr>
             <th>Question</th>
@@ -39,12 +40,12 @@
     <tbody>
         {{#each cards}}
             <tr>
-                <td hidden><input type="number" value={{this.id}}></td>
-                <td hidden><input type="text" value={{this.username}}></td>
-                <td><input type="text" disabled=disabled value={{this.question}}></td>
-                <td><input type="text" disabled=disabled value={{this.answer}}></td>                
-                <td hidden><input type="number" disabled=disabled value={{this.review_count}}></td>
-                <td hidden><input type="number" disabled=disabled value={{this.correct_count}}></td>
+                <td hidden><input type="number" name='id' value={{this.id}}></td>
+                <td hidden><input type="text" name='username' value={{this.username}}></td>
+                <td><input type="text" disabled=disabled name='question' value="{{this.question}}"></td>
+                <td><input type="text" disabled=disabled name='answer' value="{{this.answer}}"></td>                
+                <td hidden><input type="number" disabled=disabled name='review_count' value={{this.review_count}}></td>
+                <td hidden><input type="number" disabled=disabled name='correct_count' value={{this.correct_count}}></td>
                 <td><input type="submit" name="edit" value="Edit"></td>
                 <td><input type="submit" name="delete" value="Delete"></td>
             </tr>

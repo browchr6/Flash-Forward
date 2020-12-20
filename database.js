@@ -3,6 +3,9 @@ var mysql = require('./dbcon.js');
 var app = express();
 app.set('port',3000);
 
+var CORS = require('cors');
+app.use(CORS());
+
 var handlebars = require('express-handlebars').create({defaultLayout:'main'})
 app.engine('handlebars',handlebars.engine);
 app.set('view engine','handlebars');
@@ -21,7 +24,7 @@ const getAllQuery = "SELECT `id`,`username`,`deck`,`question`,`answer`,`review_c
 const getDeckNames = "SELECT deck, COUNT(id) FROM flashcards WHERE username=? GROUP BY deck";
 const getCards = "SELECT `id`,`username`,`deck`,`question`,`answer`,`review_count`,`correct_count` FROM flashcards WHERE deck=? AND username=?";
 const insertCard = "INSERT INTO flashcards (`username`,`deck`,`question`,`answer`,`review_count`,`correct_count`) VALUES (?,?,?,?,0,0)";
-const updateQuery = "UPDATE flashcards SET username=?, name=?, deck=?,question=?,answer=?, review_count=?, correct_count=? WHERE id=? ";
+const updateQuery = "UPDATE flashcards SET username=?, deck=?, question=?,answer=?, review_count=?, correct_count=? WHERE id=? ";
 const deleteQuery = "DELETE FROM flashcards WHERE id=?";
 const dropTableQuery = "DROP TABLE IF EXISTS flashcards";
 const makeTableQuery =  `CREATE TABLE flashcards(
@@ -106,7 +109,33 @@ app.post('/', function(req,res,next){
 })
 
 app.delete('/',function(req,res,next){
-    
+    console.log('delete request for id:' + req.body.id);
+    mysql.pool.query(deleteQuery, [req.body.id], function(err,results){
+        if (!err) {
+            var context = {deleteStatus:"success"};
+            res.send(context);
+        }
+        else {
+            var context = {deleteStatus:"fail"};
+            res.send(context);
+            next(err)
+        }
+    })
+})
+app.put('/',function(req,res,next){
+    console.log('edit request for id:'+req.body.id);
+    var {username, deck, question, answer, review_count, correct_count, id} = req.body;
+    mysql.pool.query(updateQuery,[username,deck,question,answer,review_count,correct_count,id],function(err,results){
+        if (err) {
+            console.log(err);
+            next(err);
+        }
+        else {
+            console.log("edited entry");
+            var context = {update:"success"};
+            res.send(context);
+          }
+    })
 })
 
 app.get('/reset-table',function(req,res,next){

@@ -5,3 +5,13 @@ body {
 th, td {
     border:0.1rem solid;
 }
+
+td > input {
+    background: none;
+    color:black;
+    border:none;
+}
+
+tr {
+    background: white;
+}
