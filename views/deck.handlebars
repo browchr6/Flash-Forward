@@ -3,6 +3,7 @@
 <center>
 
 <h1>Deck: {{deck}}</h1>
+<hr>
 <h3>Card Count: {{cardCount}}</h3>
 
 <!-- button to go back to the home page-->
@@ -14,14 +15,14 @@
     <input type="submit" name="testKnowledge" value="Test Knowledge!">
 </form>
 <br>
-
+<div class="whiteCard" id="addacard">
 <!-- Add a card-->
-<h3>Add a Card</h3>
+<p id="add">Add a Card</p>
 <form id="addCard" action="/" method="POST">
     <input type="text" hidden name="deck" value="{{deck}}">
     <input type="number" hidden name="cardCount" value={{cardCount}}>
 
-    <label style= "margin-left: -20px;" for="question">Question:</label>
+    <label style= "" for="question">Question:</label>
     <input type="text" name="question">
     <br><br>
     <label for="answer">Answer:</label>
@@ -30,8 +31,9 @@
 
     <input type="submit" name="addCard" value="Add Card">
 </form>
-
+</div>
 <!-- View cards and delete certain cards if they want to-->
+<div class="whiteCard table" id="table">
 <h3>Cards In This Deck</h3>
 {{#if cards}}
 <table id="deckTable" deckName="{{deck}}">
@@ -49,7 +51,7 @@
                 <td hidden><input type="number" name='id' value={{this.id}}></td>
                 <td hidden><input type="text" name='username' value={{this.username}}></td>
                 <td><input type="text" disabled=disabled name='question' value="{{this.question}}"></td>
-                <td><input type="text" disabled=disabled name='answer' value="{{this.answer}}"></td>                
+                <td><input type="text" disabled=disabled name='answer' value="{{this.answer}}"></td>
                 <td hidden><input type="number" disabled=disabled name='review_count' value={{this.review_count}}></td>
                 <td hidden><input type="number" disabled=disabled name='correct_count' value={{this.correct_count}}></td>
                 <td><input type="submit" name="edit" value="Edit"></td>
@@ -57,7 +59,7 @@
             </tr>
         {{/each}}
     </tbody>
-</table>
+</table></div>
 {{/if}}
 
 </center>

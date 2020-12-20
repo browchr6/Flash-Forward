@@ -4,7 +4,7 @@ th, td {
 
 td > input {
     background: none;
-    color:black;
+    color: #1d3557;
     border:none;
 }
 
@@ -22,9 +22,11 @@ body {
 }
 
 #addCard > div {
-    width:20%;
+    width:20%;;
 }
-
 .floatRight {
     float:right;
+}
+#add {
+    font-size: 25px;
 }

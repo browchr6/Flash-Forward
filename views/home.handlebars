@@ -1,21 +1,23 @@
 <center><h1 style="font-size:80px;">Flash Forward</h1></center>
+<hr>
 <center><h2>Hello {{name}}!</h2></center>
 <br>
 <center>
 <h2>Here are Your Flashcard Decks:</h2>
 <!-- Show flashcard decks, in an unordered list, with deckname, card count, and a button to choose a deck -->
 {{#if decks}}
-    <ul id="deckList" style="text-align: center; list-style-position: inside;">
+    <ul id="deckList" style="">
     {{#each decks}}
+    <div class="whiteCard">
         <form action="">
-            <li>    
+            <li>
                 {{this.deck}}, [{{this.cardCount}} cards]
                 <input type="text" hidden name="deck" value="{{this.deck}}">
-                <input type="number" hidden name="cardCount" value="{{this.cardCount}}">
+                <input type="number" hidden name="cardCount" value="{{this.cardCount}}"><br>
                 <input type="submit" name="openDeck" value="Open">
-                <input type="submit" name="testKnowledge" value="Test Knowledge!">      
-            </li>
-        </form>
+                <input type="submit" name="testKnowledge" value="Test Knowledge!">
+            </li><br>
+        </form></div>
     <br>
     {{/each}}
     </ul>
@@ -25,13 +27,14 @@
 
 <!-- Create a new deck -->
 <br>
+<div class="whiteCard">
 <h3>Create a New Deck:</h3>
 <form id="newDeck" action="/" method="POST">
 
     <label for="deck">New Deck Name: </label>
     <input type="text" name="deck"><br>
     <br>
-    <label style= "margin-left: -20px;" for="question">Question:</label>
+    <label style= "" for="question">Question:</label>
     <input type="text" name="question">
     <br><br>
     <label for="answer">Answer:</label>
@@ -40,7 +43,7 @@
 
     <input type="submit" name="newDeck" value="Create Deck">
 </form>
-
+</div>
 </center>
 
 <!-- stats on how many cards have been reviewed in the past 7 days-->
