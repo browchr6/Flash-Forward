@@ -22,6 +22,8 @@ app.use(express.static('public'));
 
 const getAllQuery = "SELECT `id`,`username`,`deck`,`question`,`answer`,`review_count`,`correct_count` FROM flashcards";
 const getDeckNames = "SELECT deck, COUNT(id) FROM flashcards WHERE username=? GROUP BY deck";
+const getIds = "Select `id` FROM flashcards where deck=? AND username=?";
+const getCard = "Select `question`,`answer` FROM flashcards where id=?";
 const getCards = "SELECT `id`,`username`,`deck`,`question`,`answer`,`review_count`,`correct_count` FROM flashcards WHERE deck=? AND username=?";
 const insertCard = "INSERT INTO flashcards (`username`,`deck`,`question`,`answer`,`review_count`,`correct_count`) VALUES (?,?,?,?,0,0)";
 const updateQuery = "UPDATE flashcards SET username=?, deck=?, question=?,answer=?, review_count=?, correct_count=? WHERE id=? ";
@@ -75,10 +77,32 @@ app.get('/',function(req,res){
             res.render('deck',context);
         })
     }
+    // if testknowledge, render test view
+    else if (req.query.testKnowledge) {
+        console.log('test knowledge request');
+        var context = {};
+        context.deck = req.query.deck;
+        res.render('test',context);
+    }
     // get decknames
     else {
         getDecks(session.username, res);
     }
+})
+
+app.get('/getId',function(req,res,next){
+    mysql.pool.query(getIds,[req.query.deck,session.username],function(err,results){
+        console.log('searched for ids');
+        res.send(results);
+    })
+})
+
+app.get('/getCard',function(req,res,next){
+    mysql.pool.query(getCard,[req.query.id],function(err,results){
+        console.log('got card with id:'+req.query.id);
+        console.log(results);
+        res.send(results);
+    })
 })
 
 app.post('/', function(req,res,next){
@@ -87,7 +111,7 @@ app.post('/', function(req,res,next){
             getDecks(session.username,res);
         })
     }
-    if (req.body.addCard) {
+    else if (req.body.addCard) {
         console.log("add card request");
         var context = {};
         context.deck = req.body.deck;
